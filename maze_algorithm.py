@@ -1,5 +1,6 @@
 import pygame
 import math
+import random
 from queue import PriorityQueue
 
 WIDTH = 800
@@ -26,6 +27,7 @@ class Node:
 		self.col = col
 
 		# position = grid coordinate * width for each node (20)
+		# for drawing the squares
 		self.x = row * width
 		self.y = col * width
 
@@ -262,6 +264,18 @@ def main(window, width):
 						grid.append([])
 						for j in range(numRows):
 							node = Node(i, j, box, numRows)
+							grid[i].append(node)
+				# 'p' creates a preset maze
+				if event.key == pygame.K_p:
+					startNode = None
+					endNode = None
+					grid = []
+					for i in range(numRows):
+						grid.append([])
+						for j in range(numRows):
+							node = Node(i, j, box, numRows)
+							if random.randint(1, 101) > 70:
+								node.barrier()
 							grid[i].append(node)
 	pygame.quit()
 
