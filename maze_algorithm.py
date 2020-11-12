@@ -26,11 +26,6 @@ class Node:
 		self.row = row
 		self.col = col
 
-		# position = grid coordinate * width for each node (20)
-		# for drawing the squares
-		self.x = row * width
-		self.y = col * width
-
 		# width = 20
 		self.width = width
 
@@ -43,7 +38,7 @@ class Node:
 		self.color = EMPTY_COLOR
 
 	def drawOnGrid(self, window):
-		pygame.draw.rect(window, self.color, (self.x, self.y, self.width, self.width))
+		pygame.draw.rect(window, self.color, (self.row * self.width, self.col * self.width, self.width, self.width))
 
 	def getPosition(self):
 		return self.row, self.col
